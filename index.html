@@ -3,599 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AfterRoot — AI-Powered Disaster Financial Recovery</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<title>AfterRoot — AI-Powered Disaster Financial Recovery | FinMango</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --blue: #2a6b9b;
-    --blue-dark: #1e5278;
-    --blue-light: #e4f0fa;
-    --blue-pale: #f2f8fc;
-    --ink: #1a1a1a;
-    --text: #3a3a3a;
-    --muted: #7a7a7a;
-    --light: #d0d0d0;
-    --lighter: #e8e8e8;
-    --bg: #fefefe;
-    --amber: #c4553a;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #fefefe; color: #3a3a3a; line-height: 1.7; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 17px;
-    overflow-x: hidden;
+  .page { max-width: 680px; margin: 0 auto; padding: 60px 24px 80px; }
+
+  .header { display: flex; align-items: center; gap: 10px; margin-bottom: 48px; }
+  .header img { height: 24px; }
+  .header .div { width: 1px; height: 18px; background: #e8e8e8; }
+  .header span { font-family: 'Caveat', cursive; font-size: 15px; color: #7a7a7a; }
+
+  h1 { font-family: 'Caveat', cursive; font-size: clamp(56px, 10vw, 80px); font-weight: 700; color: #1a1a1a; line-height: 0.9; margin-bottom: 12px; }
+  .tagline { font-size: 18px; color: #2a6b9b; margin-bottom: 28px; }
+  .desc { font-size: 17px; color: #3a3a3a; line-height: 1.75; margin-bottom: 48px; max-width: 560px; }
+
+  .tools { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+  .tool-card {
+    display: block; padding: 28px 28px; border: 1.5px solid #e8e8e8; border-radius: 6px;
+    text-decoration: none; color: inherit; transition: all 0.2s; position: relative;
   }
+  .tool-card:hover { border-color: #2a6b9b; box-shadow: 0 4px 20px rgba(42,107,155,0.08); transform: translateY(-2px); }
+  .tool-label { font-family: 'Caveat', cursive; font-size: 13px; color: #7a7a7a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .tool-card h2 { font-family: 'Caveat', cursive; font-size: 30px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+  .tool-card p { font-size: 15px; color: #7a7a7a; line-height: 1.6; }
+  .tool-tag { display: inline-block; font-family: 'Caveat', cursive; font-size: 13px; color: #2a6b9b; background: #e4f0fa; padding: 2px 12px; border-radius: 10px; margin-top: 10px; }
+  .tool-arrow { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 20px; color: #d0d0d0; transition: color 0.2s; }
+  .tool-card:hover .tool-arrow { color: #2a6b9b; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 18px 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(254,254,254,0.92);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s;
-  }
-  nav.scrolled { border-bottom-color: var(--lighter); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo img { height: 26px; }
-  .nav-logo span { font-family: 'Caveat', cursive; font-size: 16px; color: var(--muted); padding-left: 10px; border-left: 1px solid var(--lighter); }
-  .nav-links { display: flex; align-items: center; gap: 28px; }
-  .nav-links a { font-size: 13.5px; color: var(--muted); text-decoration: none; font-weight: 400; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
+  .about { border-top: 1px solid #e8e8e8; padding-top: 36px; margin-bottom: 36px; }
+  .about p { font-size: 15px; color: #7a7a7a; line-height: 1.7; margin-bottom: 14px; }
+  .about a { color: #2a6b9b; text-decoration: none; }
+  .about a:hover { text-decoration: underline; }
 
-  .wrap { max-width: 820px; margin: 0 auto; padding: 0 40px; }
+  .cred { font-size: 12px; color: #aaa; line-height: 1.6; }
+  .cred strong { color: #7a7a7a; font-weight: 500; }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 0 80px; }
-  .hero h1 { font-family: 'Caveat', cursive; font-size: clamp(72px, 10vw, 100px); font-weight: 700; color: var(--ink); line-height: 0.9; margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s ease forwards; }
-  .hero-sub { font-size: clamp(18px, 2.5vw, 21px); color: var(--blue); font-weight: 400; margin-bottom: 50px; letter-spacing: 0.3px; opacity: 0; animation: fadeUp 0.8s ease 0.12s forwards; }
-  .hero-illustration { opacity: 0; animation: fadeUp 0.8s ease 0.24s forwards; }
-  .hero-meta { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 40px; border-top: 1.5px solid var(--lighter); opacity: 0; animation: fadeUp 0.8s ease 0.36s forwards; }
-  .hero-meta p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .hero-meta strong { color: var(--ink); font-weight: 500; }
-  .hero-meta-right { text-align: right; }
-
-  /* SECTIONS */
-  .section { padding: 90px 0; }
-  .section-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
-  .section h2 { font-family: 'Caveat', cursive; font-size: clamp(42px, 6vw, 54px); font-weight: 600; color: var(--ink); line-height: 1.05; margin-bottom: 10px; }
-  .section p { font-size: 17px; line-height: 1.75; color: var(--text); margin-bottom: 20px; max-width: 680px; }
-  p.lead { font-size: 20px; color: var(--ink); font-weight: 400; line-height: 1.65; margin-bottom: 28px; }
-  .wavy { display: block; margin: 6px 0 28px; opacity: 0.5; }
-
-  /* STATS BANNER */
-  .stats-banner { background: var(--blue-pale); border-top: 1px solid var(--blue-light); border-bottom: 1px solid var(--blue-light); padding: 56px 0; }
-  .stats-inner { max-width: 820px; margin: 0 auto; padding: 0 40px; display: flex; gap: 20px; justify-content: space-between; }
-  .stat { text-align: center; flex: 1; }
-  .stat-number { font-family: 'Caveat', cursive; font-size: clamp(42px, 5vw, 56px); font-weight: 700; color: var(--blue); line-height: 1; margin-bottom: 6px; }
-  .stat-label { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-  /* LAYERS */
-  .layer { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px dashed var(--light); }
-  .layer:last-child { border-bottom: none; }
-  .layer-sketch { flex-shrink: 0; width: 110px; display: flex; align-items: center; justify-content: center; }
-  .layer-content { flex: 1; }
-  .layer-number { font-family: 'Caveat', cursive; font-size: 15px; color: var(--muted); margin-bottom: 2px; }
-  .layer-content h3 { font-family: 'Caveat', cursive; font-size: 32px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
-  .layer-content p { font-size: 15.5px; max-width: 560px; }
-
-  /* CALLOUT */
-  .insight-callout { background: var(--blue-pale); border-left: 3px solid var(--blue); padding: 32px 36px; margin: 44px 0; }
-  .insight-callout-label { font-family: 'Caveat', cursive; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; }
-  .insight-callout h3 { font-family: 'Caveat', cursive; font-size: 30px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
-  .insight-callout p { font-size: 15.5px; line-height: 1.7; color: var(--text); margin-bottom: 16px; max-width: 640px; }
-  .tool-links { display: flex; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
-  .tool-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1.5px solid var(--blue); border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--blue); text-decoration: none; transition: all 0.2s; }
-  .tool-link:hover { background: var(--blue); color: white; }
-
-  /* THREE PILLARS */
-  .pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin: 40px 0; }
-  .pillar { padding: 28px 24px; position: relative; }
-  .pillar::before { content: ''; position: absolute; inset: 0; border: 1.5px solid var(--ink); border-radius: 3px 6px 2px 5px; opacity: 0.06; transform: rotate(-0.3deg); }
-  .pillar-icon { margin-bottom: 12px; }
-  .pillar h4 { font-family: 'Caveat', cursive; font-size: 26px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-  .pillar p { font-size: 14.5px; color: var(--text); line-height: 1.6; margin-bottom: 0; }
-
-  /* SCENARIOS */
-  .scenarios { margin: 40px 0; }
-  .scenario { display: flex; gap: 24px; padding: 22px 0; border-bottom: 1px dashed var(--light); align-items: baseline; }
-  .scenario:last-child { border-bottom: none; }
-  .scenario-type { font-family: 'Caveat', cursive; font-size: 26px; font-weight: 600; color: var(--ink); min-width: 170px; flex-shrink: 0; }
-  .scenario-detail { font-size: 14.5px; color: var(--text); line-height: 1.6; }
-
-  /* CHANNELS */
-  .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 30px 0; }
-  .channel { padding: 22px; border: 1.5px solid var(--lighter); border-radius: 2px; }
-  .channel h4 { font-family: 'Caveat', cursive; font-size: 24px; color: var(--ink); margin-bottom: 4px; }
-  .channel p { font-size: 14px; color: var(--muted); margin-bottom: 0; line-height: 1.5; }
-
-  /* METRICS */
-  .metric-row { display: flex; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: 1px dashed var(--light); }
-  .metric-row:last-child { border-bottom: none; }
-  .metric-name { font-family: 'Caveat', cursive; font-size: 28px; font-weight: 600; color: var(--blue); min-width: 140px; flex-shrink: 0; }
-  .metric-desc { font-size: 15px; color: var(--text); line-height: 1.6; }
-
-  /* TIMELINE */
-  .timeline-phase { display: flex; gap: 28px; align-items: flex-start; padding: 28px 0; border-bottom: 1px dashed var(--light); }
-  .timeline-phase:last-child { border-bottom: none; }
-  .phase-label { font-family: 'Caveat', cursive; font-size: 32px; font-weight: 700; color: var(--blue); min-width: 100px; flex-shrink: 0; }
-  .phase-time { font-family: 'Caveat', cursive; font-size: 20px; color: var(--muted); min-width: 110px; flex-shrink: 0; padding-top: 8px; }
-  .phase-desc { font-size: 15px; color: var(--text); line-height: 1.65; padding-top: 6px; }
-
-  /* CLOSING */
-  .closing { padding: 90px 0 120px; text-align: center; }
-  .closing-quote { font-family: 'DM Sans', sans-serif; font-size: 20px; font-style: italic; color: var(--ink); line-height: 1.7; max-width: 600px; margin: 0 auto 50px; }
-  .closing-contact { font-size: 14px; color: var(--muted); }
-  .closing-contact strong { color: var(--ink); font-weight: 500; }
-  .closing-contact a { color: var(--blue); text-decoration: none; }
-  .closing-contact a:hover { text-decoration: underline; }
-  .closing-brand { margin-top: 30px; display: flex; justify-content: center; }
-  .closing-brand img { height: 24px; opacity: 0.4; }
-  .section-illustration { margin: 20px 0 40px; text-align: center; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } nav { display: none; } .hero { padding-top: 40px; min-height: auto; } .reveal { opacity: 1; transform: none; } }
-  @media (max-width: 768px) {
-    nav { padding: 14px 20px; } .nav-links a:nth-child(-n+4) { display: none; } .wrap { padding: 0 24px; }
-    .stats-inner { flex-direction: column; gap: 24px; padding: 0 24px; } .layer { flex-direction: column; gap: 12px; } .layer-sketch { width: auto; }
-    .pillars { grid-template-columns: 1fr; } .channel-grid { grid-template-columns: 1fr; } .scenario { flex-direction: column; gap: 4px; } .scenario-type { min-width: auto; }
-    .metric-row { flex-direction: column; gap: 4px; } .metric-name { min-width: auto; } .timeline-phase { flex-direction: column; gap: 4px; }
-    .phase-label, .phase-time { min-width: auto; } .hero-meta { flex-direction: column; gap: 12px; } .hero-meta-right { text-align: left; } .tool-links { flex-direction: column; }
+  @media (max-width: 600px) {
+    .page { padding: 40px 20px 60px; }
   }
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a href="#" class="nav-logo">
+<div class="page">
+
+  <div class="header">
     <img src="FinMango_Logo.jpg" alt="FinMango">
+    <div class="div"></div>
     <span>afterroot</span>
-  </a>
-  <div class="nav-links">
-    <a href="#problem">Problem</a>
-    <a href="#solution">Solution</a>
-    <a href="#why">Why It Matters</a>
-    <a href="#impact">Impact</a>
-    <a href="https://finmango.org">finmango.org</a>
   </div>
-</nav>
 
-<div class="wrap">
-  <section class="hero">
-    <h1>afterroot</h1>
-    <div class="hero-sub">when disaster hits, the aid is there. finding it shouldn't be the hard part.</div>
+  <h1>afterroot</h1>
+  <p class="tagline">when disaster hits, the aid is there. finding it shouldn't be the hard part.</p>
 
-    <div class="hero-illustration">
-      <svg width="460" height="200" viewBox="0 0 460 200" fill="none">
-        <path d="M40 100 L70 65 L100 100" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <rect x="48" y="100" width="44" height="40" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
-        <rect x="60" y="110" width="16" height="14" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
-        <path d="M95 95 L105 88 L98 82" stroke="#c4553a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M50 108 L44 115" stroke="#c4553a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <path d="M30 45 L26 58" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4"/><path d="M50 38 L46 51" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4"/><path d="M70 42 L66 55" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4"/><path d="M90 36 L86 49" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4"/>
-        <circle cx="140" cy="88" r="12" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-        <path d="M140 100 L140 130" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M140 110 L128 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M140 110 L152 118" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M140 130 L130 154" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M140 130 L150 154" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <rect x="155" y="80" width="22" height="16" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none" transform="rotate(-8 166 88)"/>
-        <text x="158" y="91" font-family="Caveat, cursive" font-size="9" fill="#7a7a7a" transform="rotate(-8 166 88)">FEMA</text>
-        <rect x="160" y="95" width="22" height="16" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none" transform="rotate(5 171 103)"/>
-        <text x="163" y="106" font-family="Caveat, cursive" font-size="9" fill="#7a7a7a" transform="rotate(5 171 103)">SBA</text>
-        <rect x="148" y="100" width="18" height="14" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none" transform="rotate(-12 157 107)"/>
-        <text x="121" y="78" font-family="Caveat, cursive" font-size="18" fill="#7a7a7a">?</text>
-        <rect x="228" y="72" width="32" height="50" rx="4" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-        <rect x="233" y="78" width="22" height="30" rx="1" fill="#e4f0fa" opacity="0.5"/>
-        <path d="M244 88 L244 83 M241 85.5 L247 85.5" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M237 95 L239 97 L243 93" stroke="#2a6b9b" stroke-width="1" stroke-linecap="round"/>
-        <path d="M237 100 L239 102 L243 98" stroke="#2a6b9b" stroke-width="1" stroke-linecap="round"/>
-        <circle cx="244" cy="118" r="2.5" stroke="#1a1a1a" stroke-width="0.8" fill="none"/>
-        <path d="M182 115 C200 100, 210 120, 224 98" stroke="#2a6b9b" stroke-width="1.5" stroke-dasharray="5 4" fill="none" stroke-linecap="round"/>
-        <path d="M264 98 C278 120, 300 100, 320 115" stroke="#2a6b9b" stroke-width="1.5" stroke-dasharray="5 4" fill="none" stroke-linecap="round"/>
-        <path d="M315 117 L323 113 L317 108" stroke="#2a6b9b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <circle cx="370" cy="86" r="12" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-        <path d="M366 91 C367 94, 373 94, 374 91" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="round"/>
-        <path d="M370 98 L370 128" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M370 108 L358 120" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M370 108 L382 116" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M370 128 L360 152" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M370 128 L380 152" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M400 110 L420 88 L440 110" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <rect x="405" y="110" width="30" height="28" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-        <rect x="413" y="117" width="12" height="10" stroke="#1a1a1a" stroke-width="1" fill="none"/>
-        <path d="M419 82 L419 78" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M415 85 L412 82" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M423 85 L426 82" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-        <text x="150" y="178" font-family="Caveat, cursive" font-size="16" fill="#7a7a7a">from devastated... to recovered</text>
-      </svg>
-    </div>
+  <p class="desc">AfterRoot helps disaster survivors navigate the maze of federal, state, and nonprofit aid programs — FEMA, SBA, emergency Medicaid, crisis counseling, food assistance, and more. One conversation, every program you qualify for.</p>
 
-    <div class="hero-meta">
-      <div>
-        <p><strong>FinMango</strong> · 501(c)(3)</p>
-        <p>Scott Glasgow, Founder</p>
-      </div>
-      <div class="hero-meta-right">
-        <p><strong>Google.org Impact Challenge</strong></p>
-        <p>AI for Government Innovation</p>
-      </div>
-    </div>
-  </section>
-</div>
+  <div class="tools">
+    <a href="disaster-aid-finder.html" class="tool-card">
+      <div class="tool-label">tool 01</div>
+      <h2>disaster aid finder</h2>
+      <p>Answer 8 questions about your situation. Get a personalized list of every program you may qualify for — with deadlines, amounts, and next steps.</p>
+      <div class="tool-tag">✦ try it now</div>
+      <span class="tool-arrow">→</span>
+    </a>
 
-<div class="stats-banner reveal" id="stats">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-number">$347B</div><div class="stat-label">spent on disaster recovery<br>over three decades</div></div>
-    <div class="stat"><div class="stat-number">3.5–6yr</div><div class="stat-label">average time for<br>housing recovery</div></div>
-    <div class="stat"><div class="stat-number">60 days</div><div class="stat-label">to apply for FEMA<br>before the window closes</div></div>
+    <a href="recovery-roadmap.html" class="tool-card">
+      <div class="tool-label">tool 02</div>
+      <h2>recovery roadmap</h2>
+      <p>See the exact sequence — what to file first, what depends on what, every deadline. Because filing in the wrong order can cost you thousands.</p>
+      <div class="tool-tag">✦ try it now</div>
+      <span class="tool-arrow">→</span>
+    </a>
   </div>
-</div>
 
-<div class="wrap">
+  <div class="about">
+    <p>AfterRoot is built by <a href="https://finmango.org">FinMango</a>, a 501(c)(3) nonprofit focused on financial health. We've reached 1M+ people across 13+ countries. Our existing tools — a <a href="https://finmango.org/food-assistance-calculator">Food Assistance Calculator</a> and <a href="https://finmango.org/food-desert-analyzer">Food Desert Analyzer</a> — are live now.</p>
+    <p>AfterRoot applies the same approach to disaster recovery: cross-referencing fragmented programs, surfacing what people qualify for, and guiding them through applications. Different problem, same muscle.</p>
+    <p style="color: #3a3a3a;">Applying to the <strong style="color:#1a1a1a;">Google.org Impact Challenge: AI for Government Innovation</strong> · $1M–$3M grants · Deadline April 3, 2026</p>
+  </div>
 
-  <!-- 01 · PROBLEM -->
-  <section class="section reveal" id="problem">
-    <div class="section-label">01</div>
-    <h2>the problem</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#1a1a1a" stroke-width="1.2" fill="none"/></svg>
-
-    <p class="lead">Here's what happens after a flood destroys your home. You're on a friend's couch. You've lost documents. Your kids need to get back to school. Your medication was in the house. And someone hands you a list of 14 different agencies to call.</p>
-
-    <p>You've got 60 days to file with FEMA before the window closes. But FEMA won't send an inspector until you've filed with your insurance company first. Meanwhile, you need to fill out an SBA disaster loan application — not because you want a loan, but because FEMA requires it before they'll consider you for certain grants. Miss it, and you lose access to FEMA personal property assistance entirely.</p>
-
-    <p>That's just the financial side. You also need emergency Medicaid because you lost your job and your employer-sponsored health insurance with it. Your kid's asthma meds need refilling but you don't know which pharmacies are open. FEMA funds Crisis Counseling programs, but nobody told you they exist. There are utility moratoriums, tax deadline extensions, mortgage forbearance options, Red Cross grants, Disaster Legal Services, and local nonprofit relief. Each one has its own rules. None of them talk to each other.</p>
-
-    <div class="section-illustration">
-      <svg width="340" height="155" viewBox="0 0 340 155" fill="none">
-        <circle cx="50" cy="78" r="11" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-        <path d="M50 89 L50 116" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M50 98 L40 110" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M50 98 L60 107" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M50 116 L43 138" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M50 116 L57 138" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="110" y1="138" x2="110" y2="35" stroke="#1a1a1a" stroke-width="1.5"/>
-        <rect x="118" y="30" width="60" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(-4 148 40)"/>
-        <text x="124" y="43" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(-4 148 40)">FEMA IHP</text>
-        <rect x="120" y="54" width="68" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(3 154 64)"/>
-        <text x="126" y="67" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(3 154 64)">SBA disaster</text>
-        <rect x="116" y="78" width="58" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(-2 145 88)"/>
-        <text x="122" y="91" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(-2 145 88)">insurance</text>
-        <rect x="200" y="38" width="75" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(4 238 48)"/>
-        <text x="206" y="51" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(4 238 48)">Medicaid / health</text>
-        <rect x="195" y="62" width="82" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(-3 236 72)"/>
-        <text x="200" y="75" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(-3 236 72)">crisis counseling</text>
-        <rect x="202" y="86" width="70" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(2 237 96)"/>
-        <text x="207" y="99" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(2 237 96)">Red Cross / NGO</text>
-        <rect x="197" y="110" width="80" height="19" rx="2" stroke="#1a1a1a" stroke-width="1.2" fill="none" transform="rotate(-4 237 120)"/>
-        <text x="202" y="123" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a" transform="rotate(-4 237 120)">food assistance...</text>
-      </svg>
-    </div>
-
-    <p>The result is what you'd expect. People miss deadlines. They leave money on the table. They skip medications. They take on debt they didn't need to. Or they just give up. The Urban Institute found that financial health keeps declining into the third and fourth year after a disaster. Not because the aid doesn't exist — because the system wasn't designed for someone whose life just fell apart.</p>
-  </section>
-
-  <!-- 02 · WHY IT MATTERS -->
-  <section class="section reveal" id="why">
-    <div class="section-label">02</div>
-    <h2>this isn't three problems. it's one.</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#2a6b9b" stroke-width="1.2" fill="none"/></svg>
-
-    <p class="lead">When a disaster hits, health, resilience, and economy collapse at the same time. The financial recovery timeline <em>is</em> the health timeline <em>is</em> the economic timeline. They're inseparable.</p>
-
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <path d="M24 8 C20 8, 14 14, 14 20 C14 30, 24 38, 24 38 C24 38, 34 30, 34 20 C34 14, 28 8, 24 8Z" stroke="#2a6b9b" stroke-width="1.8" fill="none"/>
-            <path d="M20 20 L24 24 L28 16" stroke="#2a6b9b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>health</h4>
-        <p>People lose employer health insurance when they lose jobs. Chronic conditions worsen when medications are gone. PTSD, depression, and substance abuse spike. FEMA funds crisis counseling — but most people never hear about it.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="16" stroke="#2a6b9b" stroke-width="1.8" fill="none"/>
-            <path d="M16 28 C18 22, 22 26, 24 20 C26 26, 30 22, 32 28" stroke="#2a6b9b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <path d="M24 8 L24 12" stroke="#2a6b9b" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M24 36 L24 40" stroke="#2a6b9b" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>resilience</h4>
-        <p>Financial recovery takes 3.5 to 6 years on average. Families paying rent on one home while rebuilding another. New aid materializes years later. Communities that can't recover financially can't recover at all.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <rect x="10" y="16" width="28" height="20" rx="2" stroke="#2a6b9b" stroke-width="1.8" fill="none"/>
-            <path d="M10 22 L38 22" stroke="#2a6b9b" stroke-width="1.5"/>
-            <path d="M16 28 L22 28" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M16 32 L26 32" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>economy</h4>
-        <p>Every dollar of disaster aid that reaches a household flows into local businesses, prevents foreclosures, and keeps communities intact. Every dollar left on the table is economic damage that compounds for years.</p>
-      </div>
-    </div>
-
-    <p>Most disaster tools address one piece. Wildfire mapping tools help with planning. Emergency notification systems handle evacuation. But nobody is solving the financial recovery navigation problem — the thing that determines whether a family actually rebuilds or spirals into long-term poverty. That's the gap AfterRoot fills.</p>
-  </section>
-
-  <!-- 03 · SOLUTION -->
-  <section class="section reveal" id="solution">
-    <div class="section-label">03</div>
-    <h2>the solution</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#2a6b9b" stroke-width="1.2" fill="none"/></svg>
-
-    <p class="lead">AfterRoot is the caseworker that doesn't exist yet. An AI that activates the moment a disaster is declared, figures out every program a household qualifies for — financial, health, food, legal — and walks them through the whole process.</p>
-
-    <div class="layer reveal">
-      <div class="layer-sketch">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="45" r="22" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
-          <path d="M50 23 L50 18" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M50 67 L50 72" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M28 45 L23 45" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M72 45 L77 45" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M50 45 L50 30 L60 45" stroke="#2a6b9b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="30" y="92" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a">time-critical</text>
-        </svg>
-      </div>
-      <div class="layer-content">
-        <div class="layer-number">layer one</div>
-        <h3>crisis financial & health assessment</h3>
-        <p>When a presidential disaster declaration drops, AfterRoot is ready within hours. A short conversation captures what happened, who's in the home, what insurance looks like, what medications are needed, what health coverage exists. The goal is to build a complete picture — financial and health — fast, because the clock is already ticking.</p>
-      </div>
-    </div>
-
-    <div class="layer reveal">
-      <div class="layer-sketch">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <rect x="15" y="20" width="28" height="22" rx="2" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-          <text x="20" y="35" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">FEMA</text>
-          <rect x="55" y="18" width="28" height="22" rx="2" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-          <text x="59" y="33" font-family="Caveat, cursive" font-size="10" fill="#7a7a7a">health</text>
-          <rect x="15" y="55" width="28" height="22" rx="2" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-          <text x="20" y="70" font-family="Caveat, cursive" font-size="10" fill="#7a7a7a">food</text>
-          <rect x="55" y="55" width="28" height="22" rx="2" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-          <text x="60" y="70" font-family="Caveat, cursive" font-size="10" fill="#7a7a7a">NGO</text>
-          <path d="M43 31 L55 31" stroke="#2a6b9b" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M29 42 L29 55" stroke="#2a6b9b" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M69 40 L69 55" stroke="#2a6b9b" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M43 66 L55 66" stroke="#2a6b9b" stroke-width="1.2" stroke-linecap="round"/>
-          <circle cx="49" cy="48" r="8" stroke="#2a6b9b" stroke-width="1.5" fill="none"/>
-          <path d="M46 48 L49 51 L53 45" stroke="#2a6b9b" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="layer-content">
-        <div class="layer-number">layer two</div>
-        <h3>unified aid navigator</h3>
-        <p>Instead of making someone call seven agencies, AfterRoot checks everything at once: FEMA grants, SBA loans, state emergency funds, insurance paths, emergency Medicaid, crisis counseling, SNAP expedited benefits, utility shutoff protections, mortgage forbearance, tax extensions, Red Cross, Disaster Legal Services, local nonprofits. One conversation, one complete picture.</p>
-      </div>
-    </div>
-
-    <div class="layer reveal">
-      <div class="layer-sketch">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <rect x="22" y="15" width="45" height="60" rx="3" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
-          <line x1="32" y1="30" x2="57" y2="30" stroke="#c8c8c8" stroke-width="1.2"/>
-          <line x1="32" y1="40" x2="57" y2="40" stroke="#c8c8c8" stroke-width="1.2"/>
-          <line x1="32" y1="50" x2="50" y2="50" stroke="#c8c8c8" stroke-width="1.2"/>
-          <path d="M30 58 L34 62 L42 54" stroke="#2a6b9b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <circle cx="68" cy="65" r="14" stroke="#c4553a" stroke-width="1.5" fill="white"/>
-          <path d="M68 58 L68 65 L75 65" stroke="#c4553a" stroke-width="1.5" stroke-linecap="round"/>
-          <text x="25" y="90" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a">deadline: 60 days</text>
-        </svg>
-      </div>
-      <div class="layer-content">
-        <div class="layer-number">layer three</div>
-        <h3>application & claims assistant</h3>
-        <p>This is where the real money gets left on the table. Most people don't know that FEMA won't process certain grants until you've been denied by the SBA. They don't know that filing insurance in the wrong order delays their FEMA inspection by months. AfterRoot handles all of it: pre-fills forms, tracks every deadline, manages the dependency chain between agencies, and sends reminders before anything expires.</p>
-      </div>
-    </div>
-
-    <div class="layer reveal">
-      <div class="layer-sketch">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <path d="M50 18 L50 25" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M32 60 C32 38, 40 28, 50 28 C60 28, 68 38, 68 60 L32 60Z" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
-          <line x1="28" y1="60" x2="72" y2="60" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M44 64 C44 70, 56 70, 56 64" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-          <path d="M72 40 C78 38, 80 44, 76 48" stroke="#2a6b9b" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <path d="M78 35 C86 32, 90 42, 84 50" stroke="#2a6b9b" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <text x="14" y="86" font-family="Caveat, cursive" font-size="12" fill="#7a7a7a">new aid available!</text>
-        </svg>
-      </div>
-      <div class="layer-content">
-        <div class="layer-number">layer four</div>
-        <h3>recovery intelligence</h3>
-        <p>Disaster recovery takes years. The average housing recovery timeline is 3.5 to 6 years. New funding shows up long after the news cameras leave — CDBG-DR grants can take years to materialize. Appeal windows open. New nonprofits enter the response. Health coverage options change. AfterRoot stays with households through all of it, sending alerts when new resources appear so nobody gets forgotten once the initial wave of attention passes.</p>
-      </div>
-    </div>
-
-    <div class="insight-callout reveal">
-      <div class="insight-callout-label">why FinMango</div>
-      <h3>this is what we already do</h3>
-      <p>FinMango's whole thing is helping people navigate financial systems that are too complicated. We built a <strong>Food Assistance Calculator</strong> that checks SNAP eligibility across multiple programs at once, and a <strong>Food Desert Analyzer</strong> that maps where grocery access breaks down by zip code. Both are live, both have real users. AfterRoot takes that same approach — cross-referencing fragmented programs, surfacing what people qualify for, guiding them through applications — and points it at disaster recovery. Different problem, same muscle.</p>
-      <div class="tool-links">
-        <a href="https://finmango.org/food-assistance-calculator" class="tool-link" target="_blank">Food Assistance Calculator →</a>
-        <a href="https://finmango.org/food-desert-analyzer" class="tool-link" target="_blank">Food Desert Analyzer →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 · DEPLOYMENT SCENARIOS -->
-  <section class="section reveal" id="scenarios">
-    <div class="section-label">04</div>
-    <h2>deployment scenarios</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#1a1a1a" stroke-width="1.2" fill="none"/></svg>
-
-    <p>Every time the president declares a disaster, AfterRoot turns on. It reads the declaration — which counties, what type, which programs activated — and configures itself for that specific event. No manual setup. The disaster is the deployment trigger.</p>
-
-    <div class="scenarios">
-      <div class="scenario"><div class="scenario-type">Hurricanes</div><div class="scenario-detail">The most financially tangled disasters. Was it wind or flood damage? That determines which insurance applies, which changes FEMA eligibility, which affects SBA referral. Add health insurance disruption on top. Most families can't untangle this alone.</div></div>
-      <div class="scenario"><div class="scenario-type">Wildfires</div><div class="scenario-detail">When the house is gone entirely, the financial and health picture gets complicated fast. Replacement vs. repair, land contamination, temporary housing for years, respiratory health impacts, mental health crisis. State planners need to know where recovery is stalling.</div></div>
-      <div class="scenario"><div class="scenario-type">Flooding</div><div class="scenario-detail">Only about 4% of U.S. homes have flood insurance, but flooding is the most common natural disaster. Most flood victims are hitting FEMA for the first time with zero experience. These are the people who need a guide most.</div></div>
-      <div class="scenario"><div class="scenario-type">Tornadoes</div><div class="scenario-detail">Everything happens fast. The destruction is sudden, the deadlines start immediately, and there's no lead time to prepare. AfterRoot's auto-activation means households can start the recovery process within hours.</div></div>
-    </div>
-  </section>
-
-  <!-- 05 · GOVERNMENT PARTNERSHIP -->
-  <section class="section reveal">
-    <div class="section-label">05</div>
-    <h2>government partnership</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#1a1a1a" stroke-width="1.2" fill="none"/></svg>
-
-    <p>AfterRoot works through the infrastructure that's already there. Emergency management agencies, Disaster Recovery Centers, 211 call lines, community health centers — these are the places people go after a disaster. Right now, those systems are overwhelmed every time. AfterRoot takes the financial and health navigation piece off their plate so caseworkers can focus on the cases that actually need a human.</p>
-
-    <div class="channel-grid">
-      <div class="channel"><h4>emergency management</h4><p>State and county EM agencies build AfterRoot into their disaster response playbook</p></div>
-      <div class="channel"><h4>disaster recovery centers</h4><p>FEMA DRCs use it to triage survivors through the multi-agency maze</p></div>
-      <div class="channel"><h4>211 systems & health depts</h4><p>Call centers and health departments handle financial + health recovery questions at scale</p></div>
-      <div class="channel"><h4>community organizations</h4><p>VOADs, FQHCs, churches, and local nonprofits use it as a force multiplier for overloaded case managers</p></div>
-    </div>
-
-    <p>The math is simple for government: every household that gets through the system without needing in-person help saves hundreds of hours of staff time. Every deadline AfterRoot catches avoids a FEMA appeal that costs everyone.</p>
-  </section>
-
-  <!-- 06 · IMPACT -->
-  <section class="section reveal" id="impact">
-    <div class="section-label">06</div>
-    <h2>measurable impact</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#2a6b9b" stroke-width="1.2" fill="none"/></svg>
-
-    <div>
-      <div class="metric-row"><div class="metric-name">speed</div><div class="metric-desc">How fast do people get from disaster declaration to first check in hand? We'll measure against FEMA's existing timelines.</div></div>
-      <div class="metric-row"><div class="metric-name">completion</div><div class="metric-desc">How many more people finish their FEMA, SBA, Medicaid, and state applications? How many fewer get rejected for missing paperwork?</div></div>
-      <div class="metric-row"><div class="metric-name">dollars found</div><div class="metric-desc">Total aid accessed across all programs — financial, health, and food — compared to what similar households typically recover without help.</div></div>
-      <div class="metric-row"><div class="metric-name">health continuity</div><div class="metric-desc">How many households maintain health coverage and medication access through the disaster recovery period? Reduction in ER visits driven by coverage gaps.</div></div>
-      <div class="metric-row"><div class="metric-name">equity</div><div class="metric-desc">Are we closing the gap? FEMA's own data shows disparities by income, race, and geography. We'll track whether AfterRoot moves the needle.</div></div>
-    </div>
-  </section>
-
-  <!-- 07 · SCALABILITY -->
-  <section class="section reveal">
-    <div class="section-label">07</div>
-    <h2>scalability</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#1a1a1a" stroke-width="1.2" fill="none"/></svg>
-
-    <p>AfterRoot's scaling works differently than most tools. The disaster itself is the trigger. New declaration, new counties, new program mix — but the same architecture underneath. The platform reads the declaration, pulls in the relevant programs, and goes live. No manual onboarding for each event.</p>
-
-    <div class="section-illustration">
-      <svg width="320" height="100" viewBox="0 0 320 100" fill="none">
-        <line x1="20" y1="50" x2="300" y2="50" stroke="#1a1a1a" stroke-width="1.2"/>
-        <circle cx="60" cy="50" r="6" fill="#2a6b9b" opacity="0.7"/><text x="45" y="38" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">hurricane</text>
-        <circle cx="120" cy="50" r="6" fill="#2a6b9b" opacity="0.7"/><text x="110" y="72" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">flood</text>
-        <circle cx="170" cy="50" r="6" fill="#2a6b9b" opacity="0.7"/><text x="155" y="38" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">wildfire</text>
-        <circle cx="220" cy="50" r="6" fill="#2a6b9b" opacity="0.7"/><text x="207" y="72" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">tornado</text>
-        <circle cx="270" cy="50" r="6" fill="#2a6b9b" opacity="0.7"/><text x="258" y="38" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a">quake</text>
-        <path d="M60 56 L60 78" stroke="#2a6b9b" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <path d="M120 56 L120 78" stroke="#2a6b9b" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <path d="M170 56 L170 78" stroke="#2a6b9b" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <path d="M220 56 L220 78" stroke="#2a6b9b" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <path d="M270 56 L270 78" stroke="#2a6b9b" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <text x="100" y="95" font-family="Caveat, cursive" font-size="14" fill="#7a7a7a">every declaration = auto-deploy</text>
-      </svg>
-    </div>
-
-    <p>There are 60+ presidential disaster declarations every year in the U.S. Each one is a deployment. And the system gets smarter with each disaster — learning which programs interact in unexpected ways, where people get stuck, what documentation trips people up.</p>
-
-    <p>Long-term, the model works anywhere disaster aid systems are fragmented — the EU Civil Protection Mechanism, Japan's Disaster Relief Act, India's National Disaster Response Fund. FinMango already works in 13+ countries, so the global network is there when it's time to expand.</p>
-  </section>
-
-  <!-- 08 · ABOUT -->
-  <section class="section reveal">
-    <div class="section-label">08</div>
-    <h2>about FinMango</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#1a1a1a" stroke-width="1.2" fill="none"/></svg>
-
-    <p>FinMango is a 501(c)(3) I founded in 2017 to tackle the financial health problems that hit young adults and vulnerable communities hardest. What started as an idea at Kent State has grown into an organization that's reached over a million people across 13+ countries.</p>
-
-    <p>The thread through everything we do is the navigation problem. People are entitled to help that exists — but the systems delivering it are so fragmented that millions never access what they qualify for. We've built free tools to close that gap, including a Food Assistance Calculator and Food Desert Analyzer that are live right now. We've partnered with Google Health, the World Health Organization, the World Bank, and the IMF.</p>
-
-    <p>AfterRoot is the most urgent application of this work. When a family loses their home, their health coverage, and their financial stability all at once, the last thing they should have to fight is the complexity of the systems designed to help them.</p>
-  </section>
-
-  <!-- 09 · TIMELINE -->
-  <section class="section reveal">
-    <div class="section-label">09</div>
-    <h2>funding & timeline</h2>
-    <svg class="wavy" width="200" height="8" viewBox="0 0 200 8"><path d="M0 4 C20 0, 40 8, 60 4 C80 0, 100 8, 120 4 C140 0, 160 8, 180 4" stroke="#2a6b9b" stroke-width="1.2" fill="none"/></svg>
-
-    <p class="lead">We're requesting $2M from Google.org to build, test, and scale AfterRoot over 18 months.</p>
-
-    <div>
-      <div class="timeline-phase">
-        <div class="phase-label">build</div>
-        <div class="phase-time">months 1–6</div>
-        <div class="phase-desc">Map the disaster financial and health landscape: FEMA rules, SBA loan requirements, emergency Medicaid pathways, crisis counseling programs, state emergency funds, insurance claim processes, food assistance networks. Build the intake engine and cross-program matching logic on top of our existing architecture. Find and onboard our first emergency management partner.</div>
-      </div>
-      <div class="timeline-phase">
-        <div class="phase-label">deploy</div>
-        <div class="phase-time">months 7–12</div>
-        <div class="phase-desc">Pilot with 1–2 emergency management agencies. Get the Application Assistant (Layer 3) working. Plug into 211 systems, DRCs, and community health centers. Test it against real disaster declarations with real survivors and case managers.</div>
-      </div>
-      <div class="timeline-phase">
-        <div class="phase-label">scale</div>
-        <div class="phase-time">months 13–18</div>
-        <div class="phase-desc">Launch the Recovery Intelligence layer (Layer 4). Turn on auto-activation for new disaster declarations nationwide. Grow to 5+ state partners. Publish an impact report and open-source the knowledge base so others can build on it.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLOSING -->
-  <section class="closing reveal">
-    <svg width="260" height="130" viewBox="0 0 260 130" fill="none" style="display:block; margin: 0 auto 40px;">
-      <circle cx="100" cy="50" r="14" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-      <path d="M94 55 C96 59, 104 59, 106 55" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="round"/>
-      <path d="M100 64 L100 98" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100 78 L85 90" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100 78 L120 72" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100 98 L88 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100 98 L112 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="155" cy="62" r="14" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-      <path d="M155 76 L155 104" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M155 86 L170 96" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M155 86 L140 78" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M155 104 L145 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M155 104 L165 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M120 72 L140 78" stroke="#2a6b9b" stroke-width="2" stroke-linecap="round"/>
-      <path d="M195 90 L215 72 L235 90" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <rect x="200" y="90" width="30" height="24" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
-      <rect x="210" y="96" width="10" height="8" stroke="#1a1a1a" stroke-width="1" fill="none"/>
-      <path d="M215 66 L215 60" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-      <path d="M210 68 L207 64" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-      <path d="M220 68 L223 64" stroke="#2a6b9b" stroke-width="1.3" stroke-linecap="round"/>
-    </svg>
-
-    <p class="closing-quote">The aid exists. The funding exists. What's missing is someone to help people find their way through it. That's what AfterRoot does.</p>
-
-    <svg width="100" height="8" viewBox="0 0 100 8" style="display:block; margin: 0 auto 30px;"><path d="M10 4 C25 0, 35 8, 50 4 C65 0, 75 8, 90 4" stroke="#2a6b9b" stroke-width="1.2" fill="none" opacity="0.4"/></svg>
-
-    <p class="closing-contact"><strong>Scott Glasgow</strong> · FinMango · <a href="https://finmango.org">finmango.org</a></p>
-    <div class="closing-brand"><img src="FinMango_Logo.jpg" alt="FinMango"></div>
-  </section>
+  <div class="cred">
+    <strong>Scott Glasgow</strong> · Founder, FinMango · <a href="mailto:scott@finmango.org" style="color:#2a6b9b; text-decoration:none;">scott@finmango.org</a><br>
+    Partners include Google Health, WHO, World Bank & Harvard
+  </div>
 
 </div>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40); });
-</script>
 
 </body>
 </html>
