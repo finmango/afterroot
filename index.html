@@ -1590,7 +1590,7 @@
           </svg>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="aidStep1">
         <div class="modal-content-sketch">
           <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
             <rect x="20" y="20" width="80" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
@@ -1607,8 +1607,38 @@
           <input type="text" class="modal-input" placeholder="e.g. 33101" maxlength="5">
         </div>
 
-        <button class="modal-btn" onclick="alert('Demo: Scanning available programs for this area...')">Scan for
-          Available Aid</button>
+        <button class="modal-btn" onclick="runAidFinder()">Scan for Available Aid</button>
+      </div>
+      <!-- Loading State -->
+      <div class="modal-body" id="aidLoading" style="display: none; text-align: center; padding: 60px 20px;">
+        <div style="font-size: 24px; animation: sketchFloat 2s infinite ease-in-out;">🔍</div>
+        <h4 style="margin-top: 16px; font-family: 'DM Sans';">Scanning databases...</h4>
+        <p style="color: var(--muted); font-size: 14px;">Cross-referencing FEMA declarations and state aid.</p>
+      </div>
+      <!-- Results State -->
+      <div class="modal-body" id="aidResults" style="display: none;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div
+            style="display: inline-block; padding: 6px 12px; background: #d1fae5; color: #065f46; border-radius: 20px; font-weight: 600; font-size: 12px; text-transform: uppercase;">
+            Match Found</div>
+          <h3 style="margin-top: 8px; font-family: 'DM Sans'; font-size: 22px;">3 Programs Available</h3>
+        </div>
+        <div
+          style="background: var(--lighter); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--green);">
+          <strong style="display: block; font-size: 16px;">FEMA IHP Assistance</strong>
+          <span style="font-size: 14px; color: var(--muted);">Eligible for Home Repair up to $42,500</span>
+        </div>
+        <div
+          style="background: var(--lighter); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--ink);">
+          <strong style="display: block; font-size: 16px;">SBA Disaster Loan</strong>
+          <span style="font-size: 14px; color: var(--muted);">Required application prerequisite for FEMA</span>
+        </div>
+        <div
+          style="background: var(--lighter); padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid #c4553a;">
+          <strong style="display: block; font-size: 16px;">D-SNAP (Disaster Food Assistance)</strong>
+          <span style="font-size: 14px; color: var(--muted);">Expedited benefits active in your zip code</span>
+        </div>
+        <button class="modal-btn" onclick="closeModal('aidFinderModal')">Start Applications</button>
       </div>
     </div>
   </div>
@@ -1623,7 +1653,7 @@
           </svg>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="roadStep1">
         <div class="modal-content-sketch">
           <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
             <path d="M20 60 C40 30, 80 70, 100 20" stroke="#1a1a1a" stroke-width="1.8" fill="none"
@@ -1642,8 +1672,52 @@
           <input type="text" class="modal-input" placeholder="For roadmap alerts">
         </div>
 
-        <button class="modal-btn" onclick="alert('Demo: Generating personalized recovery roadmap...')">Generate My
-          Roadmap</button>
+        <button class="modal-btn" onclick="runRoadmap()">Generate My Roadmap</button>
+      </div>
+      <!-- Loading State -->
+      <div class="modal-body" id="roadLoading" style="display: none; text-align: center; padding: 60px 20px;">
+        <div style="font-size: 24px; animation: sketchFloat 2s infinite ease-in-out;">📝</div>
+        <h4 style="margin-top: 16px; font-family: 'DM Sans';">Building timeline...</h4>
+        <p style="color: var(--muted); font-size: 14px;">Sequencing applications and deadline dependencies.</p>
+      </div>
+      <!-- Results State -->
+      <div class="modal-body" id="roadResults" style="display: none;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div
+            style="display: inline-block; padding: 6px 12px; background: #dbeafe; color: #1e40af; border-radius: 20px; font-weight: 600; font-size: 12px; text-transform: uppercase;">
+            Ready</div>
+          <h3 style="margin-top: 8px; font-family: 'DM Sans'; font-size: 22px;">Your Recovery Roadmap</h3>
+        </div>
+        <div
+          style="position: relative; margin-left: 12px; border-left: 2px solid var(--lighter); padding-bottom: 24px;">
+          <div
+            style="position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--green); border-radius: 50%;">
+          </div>
+          <div style="padding-left: 20px;">
+            <strong style="display: block; font-size: 15px;">1. Insurance Claim Filed</strong>
+            <span style="font-size: 13px; color: var(--green);">✓ Completed</span>
+          </div>
+        </div>
+        <div
+          style="position: relative; margin-left: 12px; border-left: 2px solid var(--lighter); padding-bottom: 24px;">
+          <div
+            style="position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--ink); border-radius: 50%;">
+          </div>
+          <div style="padding-left: 20px;">
+            <strong style="display: block; font-size: 15px;">2. FEMA IHP Application</strong>
+            <span style="font-size: 13px; color: var(--muted);">Due in 14 days (Nov 24)</span>
+          </div>
+        </div>
+        <div style="position: relative; margin-left: 12px;">
+          <div
+            style="position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border: 2px solid var(--muted); background: var(--bg); border-radius: 50%;">
+          </div>
+          <div style="padding-left: 20px;">
+            <strong style="display: block; font-size: 15px; color: var(--muted);">3. Await SBA Decision</strong>
+            <span style="font-size: 13px; color: var(--muted);">Dependent on Step 2</span>
+          </div>
+        </div>
+        <button class="modal-btn" onclick="closeModal('roadmapModal')" style="margin-top: 32px;">Got it</button>
       </div>
     </div>
   </div>
@@ -1651,10 +1725,38 @@
   <script>
     function openModal(id) {
       document.getElementById(id).classList.add('open');
+      if (id === 'aidFinderModal') {
+        document.getElementById('aidStep1').style.display = 'block';
+        document.getElementById('aidLoading').style.display = 'none';
+        document.getElementById('aidResults').style.display = 'none';
+      }
+      if (id === 'roadmapModal') {
+        document.getElementById('roadStep1').style.display = 'block';
+        document.getElementById('roadLoading').style.display = 'none';
+        document.getElementById('roadResults').style.display = 'none';
+      }
     }
 
     function closeModal(id) {
       document.getElementById(id).classList.remove('open');
+    }
+
+    function runAidFinder() {
+      document.getElementById('aidStep1').style.display = 'none';
+      document.getElementById('aidLoading').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('aidLoading').style.display = 'none';
+        document.getElementById('aidResults').style.display = 'block';
+      }, 1500);
+    }
+
+    function runRoadmap() {
+      document.getElementById('roadStep1').style.display = 'none';
+      document.getElementById('roadLoading').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('roadLoading').style.display = 'none';
+        document.getElementById('roadResults').style.display = 'block';
+      }, 1500);
     }
 
     // Close modal on backdrop click
