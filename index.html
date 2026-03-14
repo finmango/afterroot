@@ -173,6 +173,16 @@
       }
     }
 
+    @keyframes march {
+      to {
+        stroke-dashoffset: -22;
+      }
+    }
+
+    .dashed-flow {
+      animation: march 1s linear infinite;
+    }
+
     .hero-illustration svg {
       animation: sketchFloat 6s ease-in-out infinite;
     }
@@ -843,9 +853,9 @@
           <circle cx="311" cy="143" r="3.5" stroke="#1a1a1a" stroke-width="1" fill="none" />
           <!-- Dashed connection lines -->
           <path d="M222 140 C248 122, 268 145, 288 112" stroke="#2a7d5b" stroke-width="1.8" stroke-dasharray="6 5"
-            fill="none" stroke-linecap="round" />
+            fill="none" stroke-linecap="round" class="dashed-flow" />
           <path d="M334 112 C356 145, 380 118, 410 140" stroke="#2a7d5b" stroke-width="1.8" stroke-dasharray="6 5"
-            fill="none" stroke-linecap="round" />
+            fill="none" stroke-linecap="round" class="dashed-flow" />
           <path d="M404 138 L415 132 L408 125" stroke="#2a7d5b" stroke-width="1.8" fill="none" stroke-linecap="round" />
           <!-- Happy person -->
           <ellipse cx="478" cy="100" rx="14" ry="15" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
