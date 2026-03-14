@@ -118,7 +118,7 @@
 
     .hero h1 {
       font-family: 'DM Sans', sans-serif;
-      font-size: clamp(60px, 9vw, 100px);
+      font-size: clamp(80px, 11vw, 130px);
       font-weight: 700;
       letter-spacing: -3px;
       color: var(--ink);
@@ -141,6 +141,48 @@
     .hero-illustration {
       opacity: 0;
       animation: fadeUp 0.8s ease 0.24s forwards;
+    }
+
+    .hero-illustration svg,
+    .section-illustration svg {
+      filter: url(#hand-drawn);
+    }
+
+    /* Gentle floating animation for illustrations */
+    @keyframes sketchFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-6px) rotate(0.5deg);
+      }
+    }
+
+    @keyframes sketchBob {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    .hero-illustration svg {
+      animation: sketchFloat 6s ease-in-out infinite;
+    }
+
+    .section-illustration svg {
+      animation: sketchBob 5s ease-in-out infinite;
+    }
+
+    .section-illustration:nth-of-type(2) svg {
+      animation-delay: 1s;
     }
 
     .hero-meta {
@@ -752,59 +794,78 @@
       <div class="hero-sub">when disaster hits, the aid is there. finding it shouldn't be the hard part.</div>
 
       <div class="hero-illustration">
-        <svg width="460" height="200" viewBox="0 0 460 200" fill="none">
-          <path d="M40 100 L70 65 L100 100" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round" />
-          <rect x="48" y="100" width="44" height="40" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
-          <rect x="60" y="110" width="16" height="14" stroke="#1a1a1a" stroke-width="1.2" fill="none" />
-          <path d="M95 95 L105 88 L98 82" stroke="#c4553a" stroke-width="1.5" fill="none" stroke-linecap="round" />
-          <path d="M50 108 L44 115" stroke="#c4553a" stroke-width="1.3" fill="none" stroke-linecap="round" />
-          <path d="M30 45 L26 58" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4" />
-          <path d="M50 38 L46 51" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4" />
-          <path d="M70 42 L66 55" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4" />
-          <path d="M90 36 L86 49" stroke="#7a7a7a" stroke-width="0.8" opacity="0.4" />
-          <circle cx="140" cy="88" r="12" stroke="#1a1a1a" stroke-width="1.5" fill="none" />
-          <path d="M140 100 L140 130" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M140 110 L128 122" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M140 110 L152 118" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M140 130 L130 154" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M140 130 L150 154" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <rect x="155" y="80" width="22" height="16" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none"
-            transform="rotate(-8 166 88)" />
-          <text x="158" y="91" font-family="Caveat, cursive" font-size="9" fill="#7a7a7a"
-            transform="rotate(-8 166 88)">FEMA</text>
-          <rect x="160" y="95" width="22" height="16" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none"
-            transform="rotate(5 171 103)" />
-          <text x="163" y="106" font-family="Caveat, cursive" font-size="9" fill="#7a7a7a"
-            transform="rotate(5 171 103)">SBA</text>
-          <rect x="148" y="100" width="18" height="14" rx="1" stroke="#7a7a7a" stroke-width="1" fill="none"
-            transform="rotate(-12 157 107)" />
-          <text x="121" y="78" font-family="Caveat, cursive" font-size="18" fill="#7a7a7a">?</text>
-          <rect x="228" y="72" width="32" height="50" rx="4" stroke="#1a1a1a" stroke-width="1.5" fill="none" />
-          <rect x="233" y="78" width="22" height="30" rx="1" fill="#e0eee7" opacity="0.5" />
-          <path d="M244 88 L244 83 M241 85.5 L247 85.5" stroke="#2a7d5b" stroke-width="1.3" stroke-linecap="round" />
-          <path d="M237 95 L239 97 L243 93" stroke="#2a7d5b" stroke-width="1" stroke-linecap="round" />
-          <path d="M237 100 L239 102 L243 98" stroke="#2a7d5b" stroke-width="1" stroke-linecap="round" />
-          <circle cx="244" cy="118" r="2.5" stroke="#1a1a1a" stroke-width="0.8" fill="none" />
-          <path d="M182 115 C200 100, 210 120, 224 98" stroke="#2a7d5b" stroke-width="1.5" stroke-dasharray="5 4"
+        <svg width="600" height="240" viewBox="0 0 600 240" fill="none">
+          <!-- Damaged house -->
+          <path d="M42 125 C50 118, 60 90, 70 82 C78 75, 90 70, 95 85 L100 125" stroke="#1a1a1a" stroke-width="2"
             fill="none" stroke-linecap="round" />
-          <path d="M264 98 C278 120, 300 100, 320 115" stroke="#2a7d5b" stroke-width="1.5" stroke-dasharray="5 4"
-            fill="none" stroke-linecap="round" />
-          <path d="M315 117 L323 113 L317 108" stroke="#2a7d5b" stroke-width="1.5" fill="none" stroke-linecap="round" />
-          <circle cx="370" cy="86" r="12" stroke="#1a1a1a" stroke-width="1.5" fill="none" />
-          <path d="M366 91 C367 94, 373 94, 374 91" stroke="#1a1a1a" stroke-width="1" fill="none"
+          <path d="M48 125 C52 123, 55 120, 56 115 L56 160 L48 160 Z" stroke="#1a1a1a" stroke-width="1.8" fill="none"
             stroke-linecap="round" />
-          <path d="M370 98 L370 128" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M370 108 L358 120" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M370 108 L382 116" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M370 128 L360 152" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M370 128 L380 152" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M400 110 L420 88 L440 110" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round" />
-          <rect x="405" y="110" width="30" height="28" stroke="#1a1a1a" stroke-width="1.5" fill="none" />
-          <rect x="413" y="117" width="12" height="10" stroke="#1a1a1a" stroke-width="1" fill="none" />
-          <path d="M419 82 L419 78" stroke="#2a7d5b" stroke-width="1.3" stroke-linecap="round" />
-          <path d="M415 85 L412 82" stroke="#2a7d5b" stroke-width="1.3" stroke-linecap="round" />
-          <path d="M423 85 L426 82" stroke="#2a7d5b" stroke-width="1.3" stroke-linecap="round" />
-          <text x="150" y="178" font-family="Caveat, cursive" font-size="16" fill="#7a7a7a">from devastated... to
+          <path d="M56 115 L92 115 C93 120, 94 125, 95 130 L95 160 L56 160" stroke="#1a1a1a" stroke-width="1.8"
+            fill="none" stroke-linecap="round" />
+          <rect x="66" y="128" width="15" height="13" rx="0.5" stroke="#1a1a1a" stroke-width="1.2" fill="none"
+            transform="rotate(-2 73 134)" />
+          <path d="M97 108 L108 99 L102 91" stroke="#c4553a" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M52 130 L45 138" stroke="#c4553a" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          <!-- Rain -->
+          <path d="M32 48 C33 42, 29 60, 28 72" stroke="#7a7a7a" stroke-width="0.9" opacity="0.35"
+            stroke-linecap="round" />
+          <path d="M55 40 C54 46, 52 55, 50 65" stroke="#7a7a7a" stroke-width="0.9" opacity="0.35"
+            stroke-linecap="round" />
+          <path d="M78 45 C76 52, 74 60, 73 68" stroke="#7a7a7a" stroke-width="0.9" opacity="0.35"
+            stroke-linecap="round" />
+          <path d="M100 38 C98 48, 96 54, 95 62" stroke="#7a7a7a" stroke-width="0.9" opacity="0.35"
+            stroke-linecap="round" />
+          <!-- Confused person -->
+          <ellipse cx="168" cy="104" rx="14" ry="15" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
+          <path d="M168 119 C168 125, 167 140, 168 158" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M168 132 C163 136, 155 142, 148 150" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M168 132 C174 138, 180 142, 185 148" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M168 158 C164 164, 158 174, 152 182" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M168 158 C172 165, 178 174, 184 182" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <!-- Floating papers -->
+          <rect x="190" y="92" width="28" height="20" rx="1" stroke="#7a7a7a" stroke-width="1.2" fill="none"
+            transform="rotate(-10 204 102)" />
+          <text x="194" y="106" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a"
+            transform="rotate(-10 204 102)">FEMA</text>
+          <rect x="196" y="112" width="28" height="20" rx="1" stroke="#7a7a7a" stroke-width="1.2" fill="none"
+            transform="rotate(6 210 122)" />
+          <text x="200" y="126" font-family="Caveat, cursive" font-size="11" fill="#7a7a7a"
+            transform="rotate(6 210 122)">SBA</text>
+          <rect x="184" y="118" width="22" height="17" rx="1" stroke="#7a7a7a" stroke-width="1.2" fill="none"
+            transform="rotate(-14 195 127)" />
+          <text x="148" y="94" font-family="Caveat, cursive" font-size="22" fill="#7a7a7a">?</text>
+          <!-- Phone / AfterRoot app -->
+          <rect x="290" y="82" width="42" height="68" rx="6" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
+          <rect x="297" y="92" width="28" height="38" rx="1.5" fill="#e8f5ee" opacity="0.5" />
+          <path d="M311 105 L311 98 M307 101.5 L315 101.5" stroke="#2a7d5b" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M304 114 L307 117 L313 111" stroke="#2a7d5b" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M304 122 L307 125 L313 119" stroke="#2a7d5b" stroke-width="1.2" stroke-linecap="round" />
+          <circle cx="311" cy="143" r="3.5" stroke="#1a1a1a" stroke-width="1" fill="none" />
+          <!-- Dashed connection lines -->
+          <path d="M222 140 C248 122, 268 145, 288 112" stroke="#2a7d5b" stroke-width="1.8" stroke-dasharray="6 5"
+            fill="none" stroke-linecap="round" />
+          <path d="M334 112 C356 145, 380 118, 410 140" stroke="#2a7d5b" stroke-width="1.8" stroke-dasharray="6 5"
+            fill="none" stroke-linecap="round" />
+          <path d="M404 138 L415 132 L408 125" stroke="#2a7d5b" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <!-- Happy person -->
+          <ellipse cx="478" cy="100" rx="14" ry="15" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
+          <path d="M472 108 C474 113, 482 113, 484 108" stroke="#1a1a1a" stroke-width="1.2" fill="none"
+            stroke-linecap="round" />
+          <path d="M478 115 C478 122, 477 140, 478 155" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M478 128 C473 132, 464 140, 458 146" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M478 128 C484 134, 490 140, 496 145" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M478 155 C474 162, 468 172, 462 180" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M478 155 C482 162, 488 172, 494 180" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" />
+          <!-- Recovered house -->
+          <path d="M518 132 C522 125, 534 102, 545 96 C554 92, 562 98, 568 110 L572 132" stroke="#1a1a1a"
+            stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <rect x="523" y="132" width="44" height="36" stroke="#1a1a1a" stroke-width="1.8" fill="none" />
+          <rect x="536" y="140" width="14" height="12" rx="0.5" stroke="#1a1a1a" stroke-width="1.2" fill="none" />
+          <!-- Sun rays -->
+          <path d="M545 86 L545 78" stroke="#2a7d5b" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M538 90 L533 85" stroke="#2a7d5b" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M552 90 L557 85" stroke="#2a7d5b" stroke-width="1.5" stroke-linecap="round" />
+          <text x="195" y="212" font-family="Caveat, cursive" font-size="20" fill="#7a7a7a">from devastated... to
             recovered</text>
         </svg>
       </div>
@@ -812,7 +873,7 @@
       <div class="hero-meta">
         <div>
           <p><strong>FinMango</strong> · 501(c)(3)</p>
-          <p>Scott Glasgow, Founder</p>
+          <p>Scott Glasgow · Sarah Cherian · Soham Patel · Tony Ramos</p>
         </div>
         <div class="hero-meta-right">
           <p><strong>Google.org Impact Challenge</strong></p>
@@ -1384,6 +1445,17 @@
       }
     });
   </script>
+
+
+  <!-- Hidden SVG filter for hand-drawn effect -->
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+    <defs>
+      <filter id="hand-drawn" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="4" seed="2" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
 
 </body>
 
